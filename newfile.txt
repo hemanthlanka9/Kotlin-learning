@@ -1,0 +1,1 @@
+Hello friends this is for testing git commands from the local repo
