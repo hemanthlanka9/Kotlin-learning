@@ -11,5 +11,5 @@ fun main()
         "Saturday"->println("8 AM to 6 PM")
         "Sunday"->println("8 AM to 6 PM")
     }
-    print("Bye friends")
+    print("Bye prnds")
 }
