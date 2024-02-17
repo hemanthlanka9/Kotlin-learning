@@ -1,150 +1,107 @@
-// full Player class and fullName function 
+// full Player class and fullName function
 
-class Player(var name:String, var surName:String) 
+class Player(var name: String, var surName: String) {
 
-{ 
+    var totalScore = 0
 
-  var totalScore = 0 
+    var personalBestScore = 0
 
-    var personalBestScore = 0 
+    fun fullName(): String {
 
-    fun fullName (): String{ 
+        return name + " " + surName
+    }
+}
 
-        return name +" "+surName; 
+// full Scores class and checkBest function
 
-    } 
+class Scores() {
 
-} 
+    fun checkBest(best: Int, current: Int): Int {
 
- 
-// full Scores class and checkBest function 
+        if (best < current) {
 
-class Scores() 
+            return current
+        }
 
-{ 
+        return best
+    }
+}
 
-   fun checkBest(best:Int, current:Int): Int 
+fun main() {
 
-{ 
+    // initalise Player objects
 
-if(best < current) 
+    val P1 = Player("Nicola", "Tesla")
 
-      	{ 
+    val P2 = Player("Thomas", " Edison ")
 
-            return current; 
+    // create working variables
 
-      	} 
+    val scoring = Scores() // instance of the Scores class to allow access to checkBest function
 
-        return best; 
+    var lvlScore = 0 // variable to simulate Player level score
 
-} 
+    // Level 1
 
-    
+    lvlScore = 12 // insert simulated values for level score
 
-} 
+    P1.totalScore += lvlScore // use the combined operator (+=) to add the lvlScore to totalScore
 
- 
+    // suppy the parameters for the checkBest function by accessing the Player properties
 
-fun main()  
+    P1.personalBestScore = scoring.checkBest(P1.personalBestScore, lvlScore)
 
-{ 
+    lvlScore = 34
 
-    // initalise Player objects 
+    P2.totalScore += lvlScore
 
-val P1 = Player("Nicola", "Tesla") 
+    P2.personalBestScore = scoring.checkBest(P2.personalBestScore, lvlScore)
 
-val P2 = Player("Thomas", " Edison " ) 
+    // Level 2
 
-// create working variables 
+    lvlScore = 56 // insert simulated values for level score
 
-val scoring = Scores()  // instance of the Scores class to allow access to checkBest function 
+    P1.totalScore += lvlScore // use the combined operator (+=) to add the lvlScore to totalScore
 
-var lvlScore= 0 // variable to simulate Player level score 
+    // suppy the parameters for the checkBest function by accessing the Player properties
 
- 
+    P1.personalBestScore = scoring.checkBest(P1.personalBestScore, lvlScore)
 
-// Level 1 
+    lvlScore = 78 // insert simulated values for level score
 
-lvlScore = 12 // insert simulated values for level score 
+    P2.totalScore += lvlScore
 
-P1.totalScore += lvlScore; // use the combined operator (+=) to add the lvlScore to totalScore 
+    P2.personalBestScore = scoring.checkBest(P2.personalBestScore, lvlScore)
 
-// suppy the parameters for the checkBest function by accessing the Player properties 
+    // Level 3
 
-P1.personalBestScore = scoring.checkBest(P1.personalBestScore,lvlScore); 
+    lvlScore = 99 // insert simulated values for level score
 
- 
+    P1.totalScore += lvlScore // use the combined operator (+=) to add the lvlScore to totalScore
 
-lvlScore = 34 
+    // suppy the parameters for the checkBest function by accessing the Player properties
 
-P2.totalScore += lvlScore; 
+    P1.personalBestScore = scoring.checkBest(P1.personalBestScore, lvlScore)
 
-P2.personalBestScore = scoring. checkBest(P2.personalBestScore,lvlScore); 
+    lvlScore = 10
 
- 
+    P2.totalScore += lvlScore
 
-// Level 2 
+    P2.personalBestScore = scoring.checkBest(P2.personalBestScore, lvlScore)
 
-lvlScore = 56 // insert simulated values for level score 
+    // conditional check using an if statement to determine the winner
 
-P1.totalScore += lvlScore; // use the combined operator (+=) to add the lvlScore to totalScore 
+    if (P1.totalScore > P2.totalScore) {
 
-// suppy the parameters for the checkBest function by accessing the Player properties 
+        // access the Player properties to construct the String to print
 
-P1.personalBestScore = scoring.checkBest(P1.personalBestScore,lvlScore); 
+        println("The winner is " + P1.fullName() + " with a Score of  " + P1.totalScore)
 
- 
+        println("Personal Best Score is = " + P1.personalBestScore)
+    } else {
 
-lvlScore = 78 // insert simulated values for level score 
+        println("The winner is " + P2.fullName() + " with a Score of " + P2.totalScore)
 
-P2.totalScore += lvlScore; 
-
-P2.personalBestScore = scoring. checkBest(P2.personalBestScore,lvlScore); 
-
- 
-
-// Level 3 
-
-lvlScore = 99 // insert simulated values for level score 
-
-P1.totalScore += lvlScore; // use the combined operator (+=) to add the lvlScore to totalScore 
-
-// suppy the parameters for the checkBest function by accessing the Player properties 
-
-P1.personalBestScore = scoring.checkBest(P1.personalBestScore,lvlScore); 
-
- 
-
-lvlScore = 10 
-
-P2.totalScore += lvlScore; 
-
-P2.personalBestScore = scoring.checkBest(P2.personalBestScore,lvlScore); 
-
- 
-
-// conditional check using an if statement to determine the winner 
-
-if(P1.totalScore > P2.totalScore) 
-
-{ 
-
-// access the Player properties to construct the String to print 
-
-println("The winner is "+ P1.fullName() +  " with a Score of  "+P1.totalScore); 
-
-println("Personal Best Score is = " +P1.personalBestScore); 
-
-} 
-
-else 
-
-{ 
-
-println("The winner is "+ P2.fullName() + " with a Score of "+P2.totalScore); 
-
-println("Personal Best Score is = " +P2.personalBestScore); 
-
-} 
-
-} 
+        println("Personal Best Score is = " + P2.personalBestScore)
+    }
+}
